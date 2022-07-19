@@ -7,7 +7,7 @@ node {
         def customImage = docker.build("prashantkumar14/python-flask-docker")
         docker.withRegistry( '', 'docker-hub-prashant' )
         {
-            customImage.push("${env.BUILD_ID}")
+            customImage.push("${BRANCH_NAME}-${env.BUILD_ID}")
             customImage.push("latest")
         }
     }
