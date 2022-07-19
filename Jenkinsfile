@@ -4,11 +4,11 @@ node {
         checkout scm
     }
     stage('Build Image') {
-        def customImage = docker.build("prashantkumar14/python-flask-docker:${env.BUILD_ID}")
+        def customImage = docker.build("prashantkumar14/python-flask-docker")
         docker.withRegistry( '', 'docker-hub-prashant' )
         {
             customImage.push("${env.BUILD_ID}")
-            customImage.push(latest)
+            customImage.push("latest")
         }
     }
 }
