@@ -5,9 +5,9 @@ node {
     }
     stage('Build Image') {
         echo 'Build and Push Image'
-        docker.withRegistry( 'docker.io/prashantkumar14/', 'docker-hub-prashant' )
+        docker.withRegistry( '', 'docker-hub-prashant' )
         {
-            def customImage = docker.build("python-flask-docker")
+            def customImage = docker.build("prashantkumar14/python-flask-docker")
             customImage.push("${BRANCH_NAME}-${env.BUILD_ID}")
             customImage.push("latest")
         }
